@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "petstore": {
+      "type": "stdio",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "${workspaceFolder}/PetMcpServer/PetMcpServer.csproj"
+      ]
+    }
+  }
+}
