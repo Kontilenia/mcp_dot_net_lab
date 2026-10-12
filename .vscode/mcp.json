@@ -6,7 +6,7 @@
       "args": [
         "run",
         "--project",
-        "${workspaceFolder}/PetMcpServer/PetMcpServer.csproj"
+        "${workspaceFolder}/PetManagement/PetMcpServer/PetMcpServer.csproj"
       ]
     }
   }
