@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+namespace PetMcpServer.Models;
+
 public sealed class PetstorePet
 {
     [JsonPropertyName("id")]

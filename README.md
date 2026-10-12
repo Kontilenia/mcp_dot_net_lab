@@ -8,9 +8,8 @@ example.
 
 ## Run the lab
 
-1. Open this repository or its `PetManagement` folder in VS Code. Start the
-   `petstore` MCP server from the workspace's `.vscode/mcp.json`. The first run
-   restores and builds the server.
+1. Open this repository root in VS Code. Start the `petstore` MCP server from
+   `.vscode/mcp.json`. The first run restores and builds the server.
 2. Ask Copilot to look up a pet with the `get_pet_by_id` tool, for example pet
    ID `1`.
 3. Run the small practice application with

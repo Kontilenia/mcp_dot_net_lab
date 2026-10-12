@@ -1,5 +1,8 @@
 using System.Net;
 using System.Net.Http.Json;
+using PetMcpServer.Models;
+
+namespace PetMcpServer.Services;
 
 public sealed class PetstoreClient(HttpClient httpClient)
 {

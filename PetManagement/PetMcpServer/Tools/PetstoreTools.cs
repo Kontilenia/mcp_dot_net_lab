@@ -1,5 +1,8 @@
 using System.ComponentModel;
 using ModelContextProtocol.Server;
+using PetMcpServer.Services;
+
+namespace PetMcpServer.Tools;
 
 [McpServerToolType]
 public class PetstoreTools(PetstoreClient petstoreClient)
