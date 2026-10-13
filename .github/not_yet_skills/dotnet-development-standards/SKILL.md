@@ -1,8 +1,6 @@
 ---
-name: dotnet-best-practices
-description: "Write, modify, refactor, or review C# and .NET code using modern .NET best practices. Use whenever a task involves C#, .NET, ASP.NET Core, class libraries, console applications, workers, tests, project files, or solution files. Keep code simple, readable, maintainable, idiomatic, type-safe, testable, and appropriately documented."
-user-invocable: true
-disable-model-invocation: false
+name: dotnet-development-standards
+description: "Apply whenever writing, modifying, refactoring, or reviewing C# and .NET code. Applies to C# source and script files (*.cs, *.csx), project and solution files (*.csproj, *.sln, *.slnx), MSBuild files (*.props, *.targets, Directory.Build.*, Directory.Packages.props), Razor files (*.razor, *.cshtml), and global.json."
 ---
 
 # .NET Best Practices
