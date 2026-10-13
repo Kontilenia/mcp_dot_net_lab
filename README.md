@@ -1,10 +1,11 @@
 # Petstore MCP lab
 
 This lab demonstrates how GitHub Copilot can use a local stdio MCP server while
-working with an application. The local server exposes one tool,
-`get_pet_by_id`, which calls the remote Swagger Petstore
-`GET /v2/pet/{petId}` operation. The Petstore client and response model
-intentionally implement only the fields needed by this example.
+working with an application. The local server exposes `get_pet_by_id`, which
+calls the remote Swagger Petstore `GET /v2/pet/{petId}` operation, and
+`add_pet`, which calls `POST /v2/pet`. The add tool accepts only a pet name and
+status (`available`, `pending`, or `sold`), supplies an empty `photoUrls` array
+required by the API, and omits the other optional Petstore fields.
 
 ## Run the lab
 
@@ -12,7 +13,7 @@ intentionally implement only the fields needed by this example.
    from `.vscode/mcp.json`. VS Code runs the local server from source with
    `dotnet run`; no separate publish step is required.
 2. Ask Copilot to look up a pet with the `get_pet_by_id` tool, for example pet
-   ID `1`.
+   ID `1`, or add one with the `add_pet` tool.
 3. Run the small practice application with
    `dotnet run --project PetManagement/src/PetApi/PetApi.csproj`, then ask
    Copilot to make code changes informed by the live Petstore data.
