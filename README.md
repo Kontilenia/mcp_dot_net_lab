@@ -1,52 +1,54 @@
 # Petstore MCP lab
 
-This lab demonstrates how GitHub Copilot can use a local stdio MCP server while
-working with an application. The local server exposes `get_pet_by_id`, which
-calls the remote Swagger Petstore `GET /v2/pet/{petId}` operation, and
-`add_pet`, which calls `POST /v2/pet`. The add tool accepts only a pet name and
-status (`available`, `pending`, or `sold`), supplies an empty `photoUrls` array
-required by the API, and omits the other optional Petstore fields.
 
-## Run the lab
+This repository is a small .NET lab built around the public
+[Swagger Petstore API](https://petstore.swagger.io/). It shows how an MCP server
+can turn API operations into tools that an AI assistant can use.
 
-1. Open this repository root in VS Code and start the `petstore` MCP server
-   from `.vscode/mcp.json`. VS Code runs the local server from source with
-   `dotnet run`; no separate publish step is required.
-2. Ask Copilot to look up a pet with the `get_pet_by_id` tool, for example pet
-   ID `1`, or add one with the `add_pet` tool.
-3. Run the small practice application with
-   `dotnet run --project PetManagement/src/PetApi/PetApi.csproj`, then ask
-   Copilot to make code changes informed by the live Petstore data.
+The code is intentionally simple. It is meant for learning and experimenting,
+not as a production application.
 
-The solution keeps independently runnable applications under `src/` and their
-focused test projects under `tests/`:
+## Requirements
+
+To work with this lab, you need:
+
+- The .NET 10 SDK.
+- Access to GitHub Copilot through an active license, with GitHub Copilot
+  signed in and available in VS Code.
+- Outbound network access to `api.nuget.org` for .NET packages and
+  `petstore.swagger.io` for the public Petstore API.
+
+## What is in the repository?
+
+The solution contains two small applications:
+
+- **PetMcpServer** is the main part of the lab. It connects to the public
+  Petstore API and exposes tools for finding a pet by ID and adding a pet.
+- **PetApi** is a separate, in-memory sample API used for practice. It does not
+  call or replace the public Petstore API.
+
+Each application has a matching test project:
 
 ```text
 PetManagement/
 ├── src/
-│   ├── PetApi/
-│   └── PetMcpServer/
+│   ├── PetApi/                 # Small practice API
+│   │   ├── Models/             # Pet data shape
+│   │   └── Services/           # In-memory pet logic
+│   └── PetMcpServer/           # MCP server connected to Swagger Petstore
+│       ├── Configuration/      # Petstore connection settings
+│       ├── Models/             # Petstore request and response shapes
+│       ├── Services/           # HTTP client for the Petstore API
+│       └── Tools/              # Tools exposed through MCP
 ├── tests/
 │   ├── PetApi.Tests/
 │   └── PetMcpServer.Tests/
 └── PetManagement.sln
 ```
 
-Build and test everything with:
+In simple terms, an MCP tool receives a request, the `PetstoreClient` sends it
+to the public Petstore API, and the result is returned in a short,
+human-readable form.
 
-```bash
-dotnet build PetManagement/PetManagement.sln
-dotnet test PetManagement/PetManagement.sln
-```
-
-The server uses the demo API key documented by Petstore (`special-key`) and
-validates its configuration at startup. Override the API key or base address
-with `Petstore__ApiKey` or `Petstore__BaseAddress` environment variables.
-
-`PetManagement/src/PetApi` is a separate in-memory practice app, not an
-implementation or proxy of the Petstore API. The MCP server's `PetstoreClient`
-is the small Swagger consumer in this lab, so `PetApi` does not need to be
-running to use the MCP tool.
-
-The Petstore Swagger definition is available at
+The public Swagger definition used as the basis for this lab is available at
 <https://petstore.swagger.io/v2/swagger.json>.
