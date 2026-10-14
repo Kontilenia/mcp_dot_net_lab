@@ -156,10 +156,10 @@ Before continuing, confirm that:
 
 ## Step 3: Create and validate an API
 
-### 1. Write the API prompt
+### 1. Ask GitHub Copilot to create the API
 
-1. Open `.github/prompts/prompt.md`.
-2. Add the following refined prompt:
+1. Open GitHub Copilot Chat.
+2. Enter the following refined prompt:
 
    ```text
    Create a new ASP.NET Core API in .NET that uses the public Swagger Petstore
@@ -185,11 +185,14 @@ As the agent runs:
 
 After GitHub Copilot finishes:
 
-1. Use the prompt in `.github/prompts` in the same chat to ask GitHub Copilot
-   to explain the code it generated.
-2. Review all changes in the generated code files yourself.
-3. Check whether GitHub Copilot added tests or made other improvements.
-4. Decide whether to accept the changes, reject them, or ask for refinements.
+1. Open `.github/prompts/explain-added-code.prompt.md` and review the reusable
+   **Explain Added Code** prompt.
+2. Return to the same chat and add
+   `.github/prompts/explain-added-code.prompt.md` as context.
+3. Ask GitHub Copilot to use the added prompt to explain the code it generated.
+4. Review all changes in the generated code files yourself.
+5. Check whether GitHub Copilot added tests or made other improvements.
+6. Decide whether to accept the changes, reject them, or ask for refinements.
 
 You can also adjust the skills or rewrite the prompt and run it again if you
 want to explore a different result.
